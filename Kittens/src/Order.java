@@ -54,7 +54,7 @@ public class Order {
 	 * decreases. The count of reserved beds
 	 * can't increase over actual number of beds
 	 * or can't decrease below zero.
-	 * @return {int} Returns maximum amount of
+	 * @return {Integer} Returns maximum amount of
 	 * possible visiting kittens.
 	 */
 	public int getMaxKittens() {
