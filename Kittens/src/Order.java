@@ -1,17 +1,24 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
-
+/**
+ * This class handles all logic of calculating
+ * maximum amount of kittens visiting the bed
+ * service.
+ * @author Boriss
+ *
+ */
 public class Order {
 	private static Scanner lukija = new Scanner(System.in);
 	
-	public static int MAX_KITTENS = 100000;
-	public static int MIN_BEDS = 1;
+	private static int MAX_KITTENS = 100000;
+	private static int MIN_BEDS = 1;
 	
 	private int potentialKittens;
 	private int numberOfBeds;
 	private int currentBeds;
 	private ArrayList<int[]> timeList;
+	private int kittensInBed;
 	
 	public Order(int potentialKittens, int numberOfBeds) {
 		super();
@@ -19,8 +26,16 @@ public class Order {
 		this.numberOfBeds = numberOfBeds;
 		this.timeList = new ArrayList<>();
 		this.currentBeds = 0;
+		this.kittensInBed = 0;
 	}
 	
+	/**
+	 * This function handles inputs of
+	 * arrive and departure time. The amount
+	 * of asked lines depends of potential visiting 
+	 * kittens. Both arrive and departure time are
+	 * added to same ArrayList.
+	 */
 	public void runOrder() {
 		for (int i = 0; i < potentialKittens; i++) {
 			String[] line = lukija.nextLine().split(" ");
@@ -29,14 +44,21 @@ public class Order {
 			timeList.add(arriveTime);
 			timeList.add(leaveTime);
 		}
-		/*timeList.stream().sorted(new SortByFirstInt()).forEach(m -> {
-			for (int i : m) System.out.print(i);
-			System.out.println("");
-		});*/
 	}
-
-	int kittensInBed = 0;
+	
+	/**
+	 * This function sorts all registered times.
+	 * Bed is reserved if there is room (also
+	 * the return count is incremented). From
+	 * every departure, reserved bed count
+	 * decreases. The count of reserved beds
+	 * can't increase over actual number of beds
+	 * or can't decrease below zero.
+	 * @return {int} Returns maximum amount of
+	 * possible visiting kittens.
+	 */
 	public int getMaxKittens() {
+		kittensInBed = 0;
 		timeList.stream().sorted(new SortByFirstInt()).forEach(is -> {
 			if(is[1] == 0 && numberOfBeds > currentBeds) {
 				currentBeds++;
