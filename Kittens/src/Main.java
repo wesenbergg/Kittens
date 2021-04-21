@@ -14,7 +14,7 @@ public class Main {
 	 *  Esimerkiksi jos kissa1 arvot ovat 1 3 ja kissa2 arvot ovat 3 5, niin voivat nämä kissat jakaa saman sängyn.
 	 *  Esimerkiksi jos kissa1 arvot ovat 1 3 ja kissa2 arvot ovat 2 4, niin nämä kissat eivät voi jakaa samaa sänkyä.
 	 *  
-	 *  Ohjelma siis tulostaa vain maksimi määrän kissoja mitä voi ottaa vastaan.
+	 *  Ohjelma siis tulostaa vain maksimi määrän kissoja mitä voi ottaa vastaan annetuilla tiedoilla.
 	 */
 	
 	/**
